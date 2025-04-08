@@ -1,0 +1,55 @@
+---
+title: 'Module #12'
+author: "Reynaldo"
+date: "`r Sys.Date()`"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 1 perform_regression()
+
+Fits a linear regression model and returns key statistics, including coefficients, p-values, and R-squared.
+Inputs:
+
+```{r cars}
+#`data`: A data frame containing the dataset.
+#`formula`: A formula specifying the model (e.g., `y ~ x1 + x2`).
+#Outputs:
+#`coefficients`: Coefficients of the model.
+#`p_values`: P-values for the coefficients.
+#`r_squared`: R-squared value of the model.
+```
+
+## Example
+
+for example:
+
+```{r pressure, echo=FALSE}
+#perform_regression <- function(data, formula) {
+#  model <- lm(formula, data = data)
+#  summary_model <- summary(model)
+  
+#  result <- list(
+#    coefficients = summary_model$coefficients[, 1],
+ #   p_values = summary_model$coefficients[, 4],
+ #   r_squared = summary_model$r.squared
+#  )
+  
+#  return(result)
+#}
+
+# Example usage:
+#data <- data.frame(
+#  y = c(1, 2, 3, 4, 5),
+#  x1 = c(1, 2, 3, 4, 5),
+#  x2 = c(5, 4, 3, 2, 1)
+#)
+#perform_regression(data, y ~ x1 + x2)
+```
+
+This function can be one of the key functions in your final project, helping you perform regression analysis and summarizing the results.
