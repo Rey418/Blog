@@ -1,0 +1,11 @@
+export(normalize)
+export(summary_stats)
+
+
+export(create_stats_s3)
+export(print.StatsS3)
+
+
+exportClasses(StatsS4)
+exportMethods(show)
+export(create_stats_s4)
