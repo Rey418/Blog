@@ -1,9 +1,0 @@
-# easyStats
-
-A simple R package providing basic statistical tools:
-
-## Installation
-
-```r
-# install.packages("devtools")
-devtools::install_github("yourusername/easyStats")
