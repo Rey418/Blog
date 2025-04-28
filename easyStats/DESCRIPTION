@@ -1,9 +1,0 @@
-Package: easyStats
-Type: Package
-Title: Basic Statistical Tools
-Version: 0.1.0
-Authors@R: Reynaldo Hechavarria
-Description: Provides easy functions for basic statistical calculations and data normalization.
-License: MIT + file LICENSE
-Encoding: UTF-8
-LazyData: true
