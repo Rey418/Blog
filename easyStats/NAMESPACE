@@ -1,3 +1,0 @@
-export(summary_stats)
-export(normalize)
-export(print.normalized_vector)
