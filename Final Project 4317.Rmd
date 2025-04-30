@@ -1,0 +1,75 @@
+---
+title: "Final Project: Fuel Efficiency Analysis Using mpg Dataset"
+author: "Reynaldo Hechavarria"
+date: "`r Sys.Date()`"
+output: html_document
+---
+ 
+## Introduction
+This project explores how vehicle characteristics—such as engine displacement, drivetrain type, and car class—affect fuel efficiency using the mpg dataset in R. The analysis employs various data visualization techniques to identify patterns and trends in fuel economy.
+
+## Problem Description
+This project investigates how vehicle characteristics such as engine size, drivetrain type, and car classification affect fuel efficiency, as measured by miles per gallon (MPG) in both city and highway driving conditions. Using the mpg dataset from the ggplot2 package in R, I aim to evaluate the hypothesis that vehicles with smaller engines and front-wheel drive tend to have better fuel economy. Additionally, I examine how fuel performance varies across different manufacturers and car classes, such as SUVs, compact cars, and midsize sedans.
+
+## Related Work
+Throughout this course, we explored visual frameworks such as correlation plots, multivariate analysis, ranking, and deviation analysis. My approach is informed by earlier assignments where we examined relationships between variables using scatter plots, boxplots, and bar charts (e.g., comparing horsepower vs. weight in the mtcars dataset). I also drew inspiration from EPA's online fuel economy dashboards, which use clear visual storytelling—like side-by-side MPG comparisons and efficiency rankings—to help consumers make informed decisions. Those principles of simplicity, categorization, and highlighting meaningful trends are reflected in my work.
+
+## Solution
+To explore the relationship between vehicle features and MPG, I used RStudio and ggplot2 to generate several visualizations.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(dplyr) 
+```
+
+## Scatter Plot: Engine Size vs Highway MPG
+
+```{r cars}
+ggplot(mpg, aes(x = displ, y = hwy, color = class)) +
+  geom_point(size = 2) +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(title = "Engine Displacement vs Highway MPG", x = "Engine Size (L)", y = "Highway MPG") +
+  theme_minimal()
+
+```
+
+## Boxplot: City MPG by Drivetrain
+
+```{r pressure, echo=FALSE}
+ggplot(mpg, aes(x = drv, y = cty, fill = drv)) +
+  geom_boxplot() +
+  labs(title = "City MPG by Drivetrain", x = "Drivetrain", y = "City MPG") +
+  theme_minimal()
+
+```
+
+## Bar Chart: Average Highway MPG by Manufacturer
+
+```{r}
+mpg %>%
+  group_by(manufacturer) %>%
+  summarise(avg_hwy = mean(hwy)) %>%
+  ggplot(aes(x = reorder(manufacturer, avg_hwy), y = avg_hwy)) +
+  geom_col(fill = "steelblue") +
+  coord_flip() +
+  labs(title = "Average Highway MPG by Manufacturer", x = "Manufacturer", y = "Average MPG") +
+  theme_minimal()
+
+```
+
+## Deviation Plot: Highway vs City MPG Difference
+
+```{r}
+mpg %>%
+  mutate(diff = hwy - cty) %>%
+  ggplot(aes(x = reorder(model, diff), y = diff, fill = class)) +
+  geom_col() +
+  coord_flip() +
+  labs(title = "MPG Deviation: Highway vs City", x = "Model", y = "MPG Difference") +
+  theme_minimal()
+
+```
+
+## Conclusion
+The analysis confirms that engine size and drivetrain type are influential factors in determining a vehicle's fuel efficiency. Smaller engines and front-wheel drive configurations tend to perform better in city and highway conditions. Visualizations helped reveal that some manufacturers consistently outperform others in terms of MPG, and that SUVs generally lag behind more compact vehicle classes. These findings align with common consumer expectations and regulatory fuel efficiency trends.
